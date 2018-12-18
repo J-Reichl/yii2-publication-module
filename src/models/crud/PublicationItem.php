@@ -184,6 +184,20 @@ class PublicationItem extends BasePublicationItem
         }
     }
 
+    public function attachData()
+    {
+        $items = parent::find()->all();
+
+        foreach ($items as $publicationItem) {
+            $publicationId[]    = $publicationItem->id;
+            $publicationTitle[] = $publicationItem->title;
+        }
+        if (!empty($publicationTitle) && !empty($publicationId)) {
+            $publicationData = ArrayHelper::merge($publicationTitle, $publicationId);
+            return $publicationData;
+        }
+    }
+
     public function attributeLabels()
     {
         $attributeLabels = parent::attributeLabels();

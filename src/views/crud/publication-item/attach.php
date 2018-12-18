@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = Yii::t('publication', 'Attach');
 
                 echo Html::beginForm(Url::to(['/' . $this->context->module->id . '/' . $this->context->id . '/' . $this->context->action->id]), 'get');
                 echo Select2::widget([
-                    'data' => ArrayHelper::map(PublicationItem::find()->all(), 'id', 'label'),
+                    'data' => $model->attachData(),
                     'name' => 'id',
                     'theme' => Select2::THEME_BOOTSTRAP,
                     'value' => $model->id,
